@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[My how, why, what n where...]]></title>
+  <title><![CDATA[This and That]]></title>
   <link href="http://kunalpowar.github.io/atom.xml" rel="self"/>
   <link href="http://kunalpowar.github.io/"/>
-  <updated>2015-02-28T18:54:44+05:30</updated>
+  <updated>2015-02-28T19:00:59+05:30</updated>
   <id>http://kunalpowar.github.io/</id>
   <author>
     <name><![CDATA[Kunal Powar]]></name>
