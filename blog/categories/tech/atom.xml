@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Tech, | This and That]]></title>
+  <link href="http://kunalpowar.github.io/blog/categories/tech/atom.xml" rel="self"/>
+  <link href="http://kunalpowar.github.io/"/>
+  <updated>2015-03-01T01:53:36+05:30</updated>
+  <id>http://kunalpowar.github.io/</id>
+  <author>
+    <name><![CDATA[Kunal Powar]]></name>
+    <email><![CDATA[kunalpowar1203@gmail.com]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[SPI With EMBD]]></title>
+    <link href="http://kunalpowar.github.io/blog/2014/05/22/spi-with-embd/"/>
+    <updated>2014-05-22T09:52:03+05:30</updated>
+    <id>http://kunalpowar.github.io/blog/2014/05/22/spi-with-embd</id>
+    <content type="html"><![CDATA[<p>Once the mcp3008(a spi enabled 10-bit 8 channel ADC) was lost and found amoung our huge hardware heap i quickly started thinking about how to implement SPI in golang and include it as the next communicaton protocol supported under <a href="http://embd.kidoman.io">EMBD</a>. I looked through the existing implementations for the same, so that the users wont be alien to the end-points the library would provide. There was one  interesting problem at hand. EMBD is written to support multiple boards. The core functionality of SPI remains same for all the linux based ones. But in case of beaglebone, one extra step had to be done. SPI is not enabled by default in a bbb. And we dont want users to load the specific dtc everytime it boots up. So the library itself has to handle initializing SPI behind the scenes. Does this mean that i need to write separate files with essentially the same code for bbb and rpi (currently supported boards)..? In the world of clean and DRY style of coding, that would be a horrendous crime. So after a long thought this came out as a viable solution. Every host simply tells the generic spi driver if anything has to be done before the core spi features are available. In this case bbb sends a initializer function to the driver and rpi sends nil. Once the SPI core was ready, writing a package for mcp3008 was a piece of cake, thanks to the awesomely detailed datasheet.</p>
+
+<h3>Sample</h3>
+
+<p>The following sample uses the mcp3008 package to get 10 bit Digital value of the analog input at 0th channel via SPI.</p>
+
+<blockquote><p>This works <strong>without any code change</strong> on both beaglebone black and raspberypi</p></blockquote>
+
+<pre><code class="go">package main
+
+import (
+    "flag"
+    "fmt"
+    "time"
+
+    "github.com/kidoman/embd"
+    "github.com/kidoman/embd/convertors/mcp3008"
+    _ "github.com/kidoman/embd/host/all"
+)
+
+const (
+    channel = 0
+    speed   = 1000000
+    bpw     = 8
+    delay   = 0
+)
+
+func main() {
+    flag.Parse()
+    fmt.Println("this is a sample code for mcp3008 10bit 8 channel ADC")
+
+    if err := embd.InitSPI(); err != nil {
+        panic(err)
+    }
+    defer embd.CloseSPI()
+
+    spiBus := embd.NewSPIBus(embd.SPIMode0, channel, speed, bpw, delay)
+    defer spiBus.Close()
+
+    adc := mcp3008.New(mcp3008.SingleMode, spiBus)
+
+    for i := 0; i &lt; 20; i++ {
+        time.Sleep(1 * time.Second)
+        val, err := adc.AnalogValueAt(0)
+        if err != nil {
+            panic(err)
+        }
+        fmt.Printf("analog value is: %v\n", val)
+    }
+}
+</code></pre>
+
+<h3>TODOs</h3>
+
+<ul>
+<li>Cover all the modes for SPI</li>
+<li>Provide support for the differential mode of operation for mcp3008</li>
+</ul>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Hello World With EMBD]]></title>
+    <link href="http://kunalpowar.github.io/blog/2014/05/19/hello-world-with-embd/"/>
+    <updated>2014-05-19T17:27:17+05:30</updated>
+    <id>http://kunalpowar.github.io/blog/2014/05/19/hello-world-with-embd</id>
+    <content type="html"><![CDATA[<h3>A Little Story</h3>
+
+<p>Here we are, one of the usual night outs, hacking on a raspberry pi to get it working towards <a href="http://kidoman.io/engineering/thebot.html">the bot</a> idea. Started with one blinking led and then 4. Why 4? We thought if we are able to control 4 leds, then we can expand it to a 4wire parallel communication based on sending nibbles of data. With the poor pi giving us just 9 usable GPIO&rsquo;s this became a big problem. How do we interface those 10s of sensors? In comes I2C, a well-known hardware communication protocol, which uses just two wires and can talk to 128 individual devices. Now we didn&rsquo;t have an appetite to use existing C or python based libraries to talk I2C. Instead we wanted to write our own in golang. To get us started we got hold of an incomplete implementation of the protocol written in golang, which we picked up and started developing on. Thus came our first library solely containing I2C implementation. The trend continued by writing more and more such libraries right from the basic GPIO operations to interfacing with various sensors available in the market. As theoretically predicted, few of the libraries worked without any code change on beagle bone, another awesome prototyping board based on Linux.  After this, many &ldquo;nights&rdquo; were spent to make the library smart enough to work on any Linux based prototyping boards without any code change.  Thus was born the superheroic framework &ldquo;EMBD&rdquo;.</p>
+
+<p>To get you started with EMBD, lets cook up a famous &ldquo;hello world&rdquo; (of the hardware world) recipe.</p>
+
+<h3>Ingredients Required</h3>
+
+<ul>
+<li>1 EMBD</li>
+<li>1 led</li>
+<li>1 Raspberry pi</li>
+<li>Few wires</li>
+<li>Breadboard</li>
+<li>Fire extinguisher (incase you decide to short the + and -)</li>
+<li>1 Sublime Text Editor (personal favorite)</li>
+</ul>
+
+
+<p>At the end of the article is a video depicting the complete process. But i&rsquo;d recommend to read through before jumping to it. I&rsquo;ll not be talking much about the language itself here, but you can refer this to get you started with golang. One of the most compelling reasons for choosing golang for EMBD was its cross compatibility. ARM being one of the fully supported architectures, it suits well for most of the prototyping boards. Meaning you can code on any golang development friendly machine and then build for any target. Follow the instructions here to setup golang on your machine.
+The all important hardware setup
+Before you start with coding, lets see how to setup the hardware. In any project where you use a prototype board, its a good practice to keep the board and the external circuit separate. So we&rsquo;ll be using a breadboard to connect our led to the pi. Might seem like an overkill, but its &ldquo;good practice&rdquo;. Fix the led on the breadboard and before you do so make a note of the -ve and +ve terminals. (How you ask? the longer of the leads is +ve). Connect the -ve side to ground pin(3rd from top right on the pin header), and the +ve to the 4th pin from top left of the pin header. This is pin 4, which will be driving the led. Now power up your pi (via USB or external source), and get an ssh access to it on your host machine.</p>
+
+<h3>Some Electronics</h3>
+
+<p>At the core of the pi lies a ARM11 processor. But the processor alone does not provide many peripherals which are a must for any prototyping board. This is done using BCM2835 ARM Peripherals chip. It provides all the awesome features like SPI, I2C, GPIO, HDMI, USB etc. We&rsquo;ll be using the GPIO feature here. What&rsquo;s GPIO?  General Purpose Input Output. Simply put, it exposes certain pins on the board whose behavior can be controlled. Behaviors like the pin acting as an output and giving +3.3V(logic high) or 0V(logic low) the voltages vary according to boards.</p>
+
+<p>This example tries to light up a led (light emitting diode) connected to a pin on raspberry pi. What does it take to light up led&rsquo;s?&hellip;. a lil EMBD flare..</p>
+
+<h3>Lets code&hellip;</h3>
+
+<p>Create a led_blink.go file and copy the code as shown below. I&rsquo;d recommend using Sublime Text + GoSublime package.</p>
+
+<pre><code class="go">package main
+
+import (
+    "fmt"
+    "time"
+
+    "github.com/kidoman/embd"
+    _ "github.com/kidoman/embd/host/rpi"
+)
+
+func main() {
+    if err := embd.InitGPIO(); err != nil {
+        panic(err)
+    }
+    defer embd.CloseGPIO()
+
+    ledPinNum := 4
+
+    led, err := embd.NewDigitalPin(ledPinNum)
+    if err != nil {
+        panic(err)
+    }
+    err = led.SetDirection(embd.Out)
+    if err != nil {
+        panic(err)
+    }
+    defer led.Close()
+
+    for i := 0; i &lt; 20; i++ {
+        time.Sleep(1 * time.Second)
+        fmt.Printf("setting led at %v to high\n", ledPinNum)
+        led.Write(embd.High)
+
+        time.Sleep(1 * time.Second)
+        fmt.Printf("setting led at %v to low\n", ledPinNum)
+        led.Write(embd.Low)
+    }
+}
+</code></pre>
+
+<p>Al right, we have the code. Lets see what it does in more detail.</p>
+
+<p>Here all the necessary packages are imported, embd being the most important. embd also provides packages for hosts like rpi and bbb. In this example we import the rpi package. The underscore tells go to import this even though its not directly used in the code.</p>
+
+<h4><em>embd.InitGPIO()</em></h4>
+
+<p>This tries to get the board info. Why you ask? EMBD supports multiple prototyping platforms. The same code can work on a different LINUX based boards like radxa, beagle bone etc.  The board info is then used to access the corresponding drivers for GPIO control</p>
+
+<h4><em>embd.CloseGPIO()</em></h4>
+
+<p>This command handles the very important clean up once the program exits.</p>
+
+<h4><em>embd.NewDigitalPin(ledPInNum)</em></h4>
+
+<p>This is where all the magic happens. In LINUX everything is a file or dir. And so is a pin. This command uses a gpio exporter to access a directory (/sys/class/gpio/gpio4 in this case). This directory corresponds to the physical pin on the board, and has various files for supported pin functionalities. It returns an interface (led in this case) which has methods to control the behavior of the pin. It returns an error if any.</p>
+
+<h4><em>led.SetDirection(embd.Out)</em></h4>
+
+<p>This is one of the functions implemented by &ldquo;led&rdquo; interface that sets up the pin to be a output or input. <em><strong>embd.Out</strong></em> is used when you want to drive anything connected to the pin (led in this case), and <em><strong>embd.In</strong></em> is used when the input has to be read (eg: reading a switch state).</p>
+
+<h4><em>led.Write(embd.High) / led.Write(embd.Low)</em></h4>
+
+<p>This functions writes 1 or 0 to the value file within the pin&rsquo;s directory. This results in the corresponding pin giving a HIGH (3.3V) or 0V output respectively. <em><strong>embd.High</strong></em> and <em><strong>embd.Low</strong></em> are a types referring to 1 and 0 respectively.</p>
+
+<p>Now that you know what is happening, lets build the code so that our awaiting led gets its deserved light. As mentioned earlier, go supports cross compiling. A Raspberry pi has ARM architecture and LINUX os, both supported by golang. To build a executable you need to set the variables GOARCH and GOOS on your terminal as follows.</p>
+
+<pre><code class="bash">GOARCH=arm GOOS=linux go build led_blink.go
+</code></pre>
+
+<p>This should dump a led_blink executable in the same directory as the code. scp this executable onto your raspberry pi and run it as sudo user.</p>
+
+<pre><code class="bash">scp led_blink pi@&lt;ip&gt;:~
+sudo ./led_blink
+</code></pre>
+
+<p>Voila..!!!!! The led springs up to life blinking every second. There&rsquo;s your  first ever implementation of embedded programming using EMBD.</p>
+
+<p><div class="embed-video-container"><iframe src="//player.vimeo.com/video/93421433"></iframe></div></p>
+
+<h3>What&rsquo;s Next..??</h3>
+
+<p>Take further look at EMBD, and find more exciting samples to experiment on. What do you know&hellip;? One day you might be writing a new feature yourself and send in the pull requests. We are waiting&hellip;</p>
+]]></content>
+  </entry>
+  
+</feed>
