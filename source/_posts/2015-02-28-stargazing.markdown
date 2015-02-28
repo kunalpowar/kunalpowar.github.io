@@ -5,6 +5,7 @@ date: 2015-02-28 19:05:22 +0530
 comments: true
 categories: star_gazing, universe
 published: true
+share: true
 ---
 
 ##"I Like Stargazing"

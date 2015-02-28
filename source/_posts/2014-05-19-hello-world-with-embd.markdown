@@ -5,6 +5,7 @@ date: 2014-05-19 17:27:17 +0530
 comments: true
 categories: embd, tech, golang, embedded
 published: true
+share: true
 ---
 
 ###A Little Story
