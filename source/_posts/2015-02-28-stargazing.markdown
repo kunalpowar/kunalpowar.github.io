@@ -3,18 +3,17 @@ layout: post
 title: "Stargazing?"
 date: 2015-02-28 19:05:22 +0530
 comments: true
-categories: star_gazing, universe
+categories: star_gazing universe
 published: true
 share: true
 ---
 
-##"I Like Stargazing"
+**Me**: _I Like Stargazing._  
+**Person1**: _So you are basically a huge follower of Hollywood stars?_  
+**Person2**: _Whoa it sounds so cool? what exactly do you do?_  
+**Person3**: _Is that really a hobby?_  
 
-_So you are basically a huge follower of Hollywood stars?_  
-_Whoa it sounds so cool? what exactly do you do?_  
-_Is that really a hobby?_  
-
-These are the kind of thoughts people have when i say that am a Stargazer. Well the second thought is not quite wrong! But no no no and no a 1000 more times. Its got nothing to do with the entertainment industry!!! Then what exactly is Stargazing?
+These are the kind of thoughts people have when i say that am a Stargazer. Well the second thought is not quite wrong! But no no no and no a 1000 more times. Its got nothing to do with the entertainment industry!!! Then what exactly is Stargazing? <!--more-->
 
 Have you ever been in a situation where you are away from city and you see that the night sky is just brilliantly littered with stars when compared to city skies and you just cant help but stop whatever you were doing and just stare and stare at it. Everyone has does this. So is everyone a Stargazer?
 
