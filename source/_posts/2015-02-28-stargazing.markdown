@@ -13,7 +13,7 @@ share: true
 **Person2**: _Whoa it sounds so cool? what exactly do you do?_  
 **Person3**: _Is that really a hobby?_  
 
-These are the kind of thoughts people have when i say that am a Stargazer. Well the second thought is not quite wrong! But no no no and no a 1000 more times. Its got nothing to do with the entertainment industry!!! Then what exactly is Stargazing? <!--more-->
+These are the kind of thoughts people have when I say that am a Stargazer. Well the second thought is not quite wrong! But no no no and no a 1000 more times. Its got nothing to do with the entertainment industry!!! Then what exactly is Stargazing? <!--more-->
 
 Have you ever been in a situation where you are away from city and you see that the night sky is just brilliantly littered with stars when compared to city skies and you just cant help but stop whatever you were doing and just stare and stare at it. Everyone has does this. So is everyone a Stargazer?
 
@@ -22,12 +22,12 @@ No. It takes more than just watching the skies. You've to know and understand it
 
 ###How do you start with Stargazing?
 
-At first, start by just looking up at the night sky (Not while crossing the street please. I learned it the hard way.) As a city dweller, i have to be honest that the view is not what you expect. Thanks to all the city lights and pollution. Its much much better on the outskirts. Use a software like [Stellarium](http://www.stellarium.org/) to understand the sky you see. 
+At first, start by just looking up at the night sky (Not while crossing the street please. I learned it the hard way.) As a city dweller, I have to be honest that the view is not what you expect. Thanks to all the city lights and pollution. Its much much better on the outskirts. Use a software like [Stellarium](http://www.stellarium.org/) to understand the sky you see. 
 
 ![Screen shot of Stellarium app](/images/stellarium.png "Screen shot of the Stellarium App")
 _Screen shot of the Stellarium App_
 
-This tool will help you in identifying constellations. One might argue why knowing constellations is important? Constellations are your guide to all the interesting objects in the sky. Lets say i want to spot orion nebula with my binocular. I'll first spot the Orion constellation and then I'll know where exactly is the nebula as shown below.
+This tool will help you in identifying constellations. One might argue why knowing constellations is important? Constellations are your guide to all the interesting objects in the sky. Lets say I want to spot orion nebula with my binocular. I'll first spot the Orion constellation and then I'll know where exactly is the nebula as shown below.
 
 ![orion_position](/images/orion_position.png "position of orion nebula with respect to orion constellation")
 _position of orion nebula with respect to orion constellation_
@@ -35,12 +35,12 @@ _position of orion nebula with respect to orion constellation_
 Interesting fact, if you are able to spot Sagittarius, you are looking in the direction of the **center of our galaxy**.
 
 ###Binocular Astronomy
-Try spotting as many constellations as you can remember, along with few interesting objects in and around them. This takes a lot of practice and patience. Once you are comfortable with the sky and tools like stellarium, its time for gifting yourself a Binocular. Yes its a bit of an investment, but if you really love the sky, this doesn't matter (or just remind about your upcoming birthday to your friends.) The one below is is what i have. Its a [Celestron 15X70](http://www.celestron.com/browse-shop/astronomy/astronomy-binoculars/skymaster-15x70-binocular). 
+Try spotting as many constellations as you can remember, along with few interesting objects in and around them. This takes a lot of practice and patience. Once you are comfortable with the sky and tools like stellarium, its time for gifting yourself a Binocular. Yes its a bit of an investment, but if you really love the sky, this doesn't matter (or just remind about your upcoming birthday to your friends.) The one below is is what I have. Its a [Celestron 15X70](http://www.celestron.com/browse-shop/astronomy/astronomy-binoculars/skymaster-15x70-binocular). 
 
 ![Celestron 15X70](/images/binocular.jpg)
 _[Celestron 15X70](http://www.celestron.com/browse-shop/astronomy/astronomy-binoculars/skymaster-15x70-binocular)._
 
-You would want to start with something like this or even a 10X50 would do if you are looking for cheaper alternative. See that the binocular has large objective lens so that it collects more light, and the optics are of good quality. How can a small binocular with limited zoom possibly show faint objects in night sky? Trust me when i say this. It'll surprise you. Just point your binocular to an otherwise dark star less spot in the sky and you'll see hundreds of stars there. This is possible as the binocular has a large objective and there are two of those, thus collecting a lot of light. The orion nebula will not look like a star anymore. You'll see a faint cloud instead. Lots of [Globular Clusters](http://en.wikipedia.org/wiki/Globular_cluster) start becoming visible. And then there's the moon. The craters are sharper and you can almost see the surface features. Please don't expect Hubble like images from your poor small limited power binocular.
+You would want to start with something like this or even a 10X50 would do if you are looking for cheaper alternative. See that the binocular has large objective lens so that it collects more light, and the optics are of good quality. How can a small binocular with limited zoom possibly show faint objects in night sky? Trust me when I say this. It'll surprise you. Just point your binocular to an otherwise dark star less spot in the sky and you'll see hundreds of stars there. This is possible as the binocular has a large objective and there are two of those, thus collecting a lot of light. The orion nebula will not look like a star anymore. You'll see a faint cloud instead. Lots of [Globular Clusters](http://en.wikipedia.org/wiki/Globular_cluster) start becoming visible. And then there's the moon. The craters are sharper and you can almost see the surface features. Please don't expect Hubble like images from your poor small limited power binocular.
 
 ###Telescopes
 Once you feel that you've done enough binocular astronomy, you can move over to higher magnification. Meaning, its time to get a Telescope. I wouldn't be the best person to talk about these as don't own one. But I'll try stating facts I've known from people who do. Telescopes give you the power to see individual objects at much larger magnification (>50x). You'll be able to spot and see few galaxies with high [surface brightness](http://en.wikipedia.org/wiki/Surface_brightness). Telescopes come in two major variants, Refractive and Reflective. The Refractive telescopes use complex system of lenses, and the latter uses a paraboloid mirror. Eyepieces as available as separate attachments to allow multiple zoom options. Also they allow you to attach a camera for Astro-Photography. Few points before you'd go for a telescope.
@@ -60,7 +60,7 @@ _Part of Taurus constellation. The bright object is Jupiter_
 ![Point And Shoot Image 2](/images/pointAndShoot2.jpg)
 _The Orion constellation_
 
-Most DSLRs have an option to expose the sensor towards the object for custom durations. This allows the sensor to capture more light, thus producing a image with lot more stars than what a point and shoot will do. If you point a sensor towards a night sky for elongated durations, it'll be able to capture lot of stars, but thanks to earth's rotation, their position on the sensor would have moved. This results in what's called star trails. Below is a star trails image i captured using a friend's DSLR. For this i captured 22 images each exposed for 30 seconds and stacked them using a software. (One continuous shot will add lot of noise in the image.)
+Most DSLRs have an option to expose the sensor towards the object for custom durations. This allows the sensor to capture more light, thus producing a image with lot more stars than what a point and shoot will do. If you point a sensor towards a night sky for elongated durations, it'll be able to capture lot of stars, but thanks to earth's rotation, their position on the sensor would have moved. This results in what's called star trails. Below is a star trails image I captured using a friend's DSLR. For this I captured 22 images each exposed for 30 seconds and stacked them using a software. (One continuous shot will add lot of noise in the image.)
 
 ![Star Trail Image](/images/starTrails.jpg)
 _Camera Credits: [Karan](http://kidoman.io/)_
@@ -74,6 +74,6 @@ _Camera Credits: Sachin Nayak_
 Apart from all these, try joining local groups or communities interested in the same. I got a lot of help from [Bangalore Astronomical Society](http://bas.org.in/) which organized lots of star parties. This is where my real interest in star gazing grew. I am sure that every city will have one such group. If not, its not really hard to start one.
 
 ![At my first star party](/images/starParty.jpg)
-_My first star party (dont miss the monstorus 12" reflector)_
+_My first star party (dont miss the monstorus 17.5" reflector)_
 
 I hope this inspires more people to start StarGazing!
